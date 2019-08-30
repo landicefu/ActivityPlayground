@@ -38,6 +38,12 @@ interface ActivityNavigationView {
             am.appTasks[0].taskInfo
         }?.let {
             info.append("(${it.numActivities} activities)")
+            val flags = activity.intent?.flags ?: return@let
+            FLAGS.forEach { flag ->
+                if (flag.second and flags != 0) {
+                    info.append("\nflag: ${flag.first}")
+                }
+            }
         }
         return info.toString()
     }
