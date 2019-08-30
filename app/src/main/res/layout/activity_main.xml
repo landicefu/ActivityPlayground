@@ -29,6 +29,30 @@
                 android:text="second - standard mode"
                 android:onClick="@{() -> navigationView.launchSecondActivityInStandardMode()}"/>
 
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="main - single top mode"
+                android:onClick="@{() -> navigationView.launchMainActivityInSingleTopMode()}"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="second - single top mode"
+                android:onClick="@{() -> navigationView.launchSecondActivityInSingleTopMode()}"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="single task activity"
+                android:onClick="@{() -> navigationView.launchSingleTaskActivity()}"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="single instance activity"
+                android:onClick="@{() -> navigationView.launchSingleInstanceActivity()}"/>
+
     </LinearLayout>
 
 </layout>

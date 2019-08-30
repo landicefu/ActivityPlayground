@@ -7,15 +7,19 @@ interface ActivityNavigationView {
 
     fun provideActivity(): Activity
 
-    fun launchMainActivityInStandardMode() {
+    fun launchActivity(activityClass: Class<out Activity>, vararg additionalFlags: Int) {
         val activity = provideActivity()
-        activity.startActivity(Intent(activity.applicationContext, MainActivity::class.java))
+        activity.startActivity(Intent(activity.applicationContext, activityClass).apply {
+            additionalFlags.forEach { addFlags(it) }
+        })
     }
 
-    fun launchSecondActivityInStandardMode() {
-        val activity = provideActivity()
-        activity.startActivity(Intent(activity.applicationContext, SecondActivity::class.java))
-    }
+    fun launchMainActivityInStandardMode() = launchActivity(MainActivity::class.java)
+    fun launchSecondActivityInStandardMode() = launchActivity(SecondActivity::class.java)
+    fun launchMainActivityInSingleTopMode() = launchActivity(MainActivity::class.java, Intent.FLAG_ACTIVITY_SINGLE_TOP)
+    fun launchSecondActivityInSingleTopMode() = launchActivity(SecondActivity::class.java, Intent.FLAG_ACTIVITY_SINGLE_TOP)
+    fun launchSingleTaskActivity() = launchActivity(SingleTaskActivity::class.java)
+    fun launchSingleInstanceActivity() = launchActivity(SingleInstanceActivity::class.java)
 
     fun getActivityIdentity(): String {
         val activity = provideActivity()

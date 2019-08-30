@@ -26,3 +26,6 @@ open class BaseActivity : AppCompatActivity(), ActivityNavigationView {
 
 class MainActivity : BaseActivity()
 class SecondActivity : BaseActivity()
+class SingleTaskActivity : BaseActivity()
+class SingleInstanceActivity : BaseActivity()
+
