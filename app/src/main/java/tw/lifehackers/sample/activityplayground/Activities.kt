@@ -24,6 +24,11 @@ open class BaseActivity : AppCompatActivity(), ActivityNavigationView {
     }
 
     override fun provideActivity(): Activity = this
+
+    override fun onResume() {
+        super.onResume()
+        binding.invalidateAll()
+    }
 }
 
 class MainActivity : BaseActivity()

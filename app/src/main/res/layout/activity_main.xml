@@ -8,6 +8,7 @@
                 type="tw.lifehackers.sample.activityplayground.ActivityNavigationView"/>
 
         <import type="tw.lifehackers.sample.activityplayground.ActivityFlags"/>
+        <import type="tw.lifehackers.sample.activityplayground.App"/>
 
     </data>
 
@@ -53,6 +54,13 @@
                     android:layout_marginBottom="16dp"
                     android:text="single instance activity"
                     android:onClick="@{() -> navigationView.launchSingleInstanceActivity()}"/>
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="restart"
+                    android:onClick="@{() -> App.restart()}"/>
 
             <LinearLayout
                     android:layout_width="match_parent"
