@@ -1,13 +1,14 @@
 package tw.lifehackers.sample.activityplayground
 
+import android.annotation.SuppressLint
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import tw.lifehackers.sample.activityplayground.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), ActivityNavigationView {
+@SuppressLint("Registered")
+open class BaseActivity : AppCompatActivity(), ActivityNavigationView {
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,9 +17,12 @@ class MainActivity : AppCompatActivity(), ActivityNavigationView {
         IdentityStores.namedStore.putIdentity(taskId, "taskId")
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.apply {
-            navigationView = this@MainActivity
+            navigationView = this@BaseActivity
         }
     }
 
     override fun provideActivity(): Activity = this
 }
+
+class MainActivity : BaseActivity()
+class SecondActivity : BaseActivity()
