@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity(), ActivityNavigationView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        IdentityStores.classStore.putIdentity(this)
+        IdentityStores.namedStore.putIdentity(taskId, "taskId")
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.apply {
             navigationView = this@MainActivity
