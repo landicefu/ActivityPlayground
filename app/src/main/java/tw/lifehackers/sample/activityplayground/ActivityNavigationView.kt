@@ -1,7 +1,10 @@
 package tw.lifehackers.sample.activityplayground
 
 import android.app.Activity
+import android.app.ActivityManager
+import android.content.Context
 import android.content.Intent
+import tw.lifehackers.sample.activityplayground.extension.tryOrNull
 
 interface ActivityNavigationView {
     companion object {
@@ -48,10 +51,17 @@ interface ActivityNavigationView {
     fun launchSingleTaskActivity() = launchActivity(SingleTaskActivity::class.java)
     fun launchSingleInstanceActivity() = launchActivity(SingleInstanceActivity::class.java)
 
-    fun getActivityIdentity(): String {
+    fun getActivityInfo(): String {
         val activity = provideActivity()
         val identity = IdentityStores.classStore.getSimpleNameAndSerialNumber(activity)
         val taskIdentity = IdentityStores.namedStore.getSerialNumber(activity.taskId, "taskId")
-        return "$identity on task #$taskIdentity"
+        val info = StringBuilder("$identity on task #$taskIdentity")
+        tryOrNull {
+            val am = activity.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            am.appTasks[0].taskInfo
+        }?.let {
+            info.append("(${it.numActivities} activities)")
+        }
+        return info.toString()
     }
 }
