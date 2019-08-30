@@ -7,9 +7,14 @@ interface ActivityNavigationView {
 
     fun provideActivity(): Activity
 
-    fun launchActivityInStandardMode() {
+    fun launchMainActivityInStandardMode() {
         val activity = provideActivity()
-        activity.startActivity(Intent(activity.applicationContext, activity::class.java))
+        activity.startActivity(Intent(activity.applicationContext, MainActivity::class.java))
+    }
+
+    fun launchSecondActivityInStandardMode() {
+        val activity = provideActivity()
+        activity.startActivity(Intent(activity.applicationContext, SecondActivity::class.java))
     }
 
     fun getActivityIdentity(): String {

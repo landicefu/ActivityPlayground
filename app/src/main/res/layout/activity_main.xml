@@ -20,8 +20,14 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="standard mode"
-                android:onClick="@{() -> navigationView.launchActivityInStandardMode()}"/>
+                android:text="main - standard mode"
+                android:onClick="@{() -> navigationView.launchMainActivityInStandardMode()}"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="second - standard mode"
+                android:onClick="@{() -> navigationView.launchSecondActivityInStandardMode()}"/>
 
     </LinearLayout>
 
