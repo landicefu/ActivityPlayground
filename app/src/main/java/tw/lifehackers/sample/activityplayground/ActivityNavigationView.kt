@@ -5,19 +5,38 @@ import android.content.Intent
 
 interface ActivityNavigationView {
 
+    var singleTopFlag: Boolean
+    var clearTaskFlag: Boolean
+    var clearTopFlag: Boolean
+    var newDocumentFlag: Boolean
+
     fun provideActivity(): Activity
 
     fun launchActivity(activityClass: Class<out Activity>, vararg additionalFlags: Int) {
         val activity = provideActivity()
         activity.startActivity(Intent(activity.applicationContext, activityClass).apply {
             additionalFlags.forEach { addFlags(it) }
+            if (newDocumentFlag) {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT)
+            }
+
+            if (clearTaskFlag) {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            }
+
+            if (clearTopFlag) {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            }
+
+            if (singleTopFlag) {
+                addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            }
         })
     }
 
     fun launchMainActivityInStandardMode() = launchActivity(MainActivity::class.java)
     fun launchSecondActivityInStandardMode() = launchActivity(SecondActivity::class.java)
     fun launchMainActivityInSingleTopMode() = launchActivity(MainActivity::class.java, Intent.FLAG_ACTIVITY_SINGLE_TOP)
-    fun launchSecondActivityInSingleTopMode() = launchActivity(SecondActivity::class.java, Intent.FLAG_ACTIVITY_SINGLE_TOP)
     fun launchSingleTaskActivity() = launchActivity(SingleTaskActivity::class.java)
     fun launchSingleInstanceActivity() = launchActivity(SingleInstanceActivity::class.java)
 

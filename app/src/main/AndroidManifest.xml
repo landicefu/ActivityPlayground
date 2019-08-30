@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SecondActivity"/>
+        <activity android:name=".SecondActivity" android:launchMode="singleTask"/>
         <activity android:name=".SingleTaskActivity" android:launchMode="singleTask"/>
         <activity android:name=".SingleInstanceActivity" android:launchMode="singleInstance"/>
 

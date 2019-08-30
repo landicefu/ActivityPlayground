@@ -9,6 +9,11 @@ import tw.lifehackers.sample.activityplayground.databinding.ActivityMainBinding
 
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity(), ActivityNavigationView {
+    override var singleTopFlag: Boolean = false
+    override var clearTaskFlag: Boolean = false
+    override var clearTopFlag: Boolean = false
+    override var newDocumentFlag: Boolean = false
+
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

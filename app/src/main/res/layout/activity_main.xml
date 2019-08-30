@@ -38,12 +38,6 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="second - single top mode"
-                android:onClick="@{() -> navigationView.launchSecondActivityInSingleTopMode()}"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="single task activity"
                 android:onClick="@{() -> navigationView.launchSingleTaskActivity()}"/>
 
@@ -52,6 +46,30 @@
                 android:layout_height="wrap_content"
                 android:text="single instance activity"
                 android:onClick="@{() -> navigationView.launchSingleInstanceActivity()}"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={navigationView.singleTopFlag}"
+                android:text="single top flag"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={navigationView.clearTaskFlag}"
+                android:text="clear task flag"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={navigationView.clearTopFlag}"
+                android:text="clear top flag"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={navigationView.newDocumentFlag}"
+                android:text="new document flag"/>
 
     </LinearLayout>
 
