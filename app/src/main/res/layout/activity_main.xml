@@ -2,17 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="navigationView" type="tw.lifehackers.sample.activityplayground.ActivityNavigationView"/>
+
+        <variable
+                name="navigationView"
+                type="tw.lifehackers.sample.activityplayground.ActivityNavigationView"/>
+
+        <import type="tw.lifehackers.sample.activityplayground.ActivityFlags"/>
+
     </data>
 
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:overScrollMode="never">
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
+                android:padding="30dp"
                 android:orientation="vertical"
                 android:gravity="center_horizontal">
 
@@ -24,6 +31,7 @@
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:text="main - standard mode"
                     android:onClick="@{() -> navigationView.launchMainActivityInStandardMode()}"/>
 
@@ -42,129 +50,150 @@
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="single instance activity"
                     android:onClick="@{() -> navigationView.launchSingleInstanceActivity()}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[0]}"
-                    android:text="@{navigationView.Companion.FLAGS[0].first}"/>
+                    android:orientation="horizontal">
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[1]}"
-                    android:text="@{navigationView.Companion.FLAGS[1].first}"/>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[2]}"
-                    android:text="@{navigationView.Companion.FLAGS[2].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[0]}"
+                            android:text="@{ActivityFlags.FLAGS[0].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[3]}"
-                    android:text="@{navigationView.Companion.FLAGS[3].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[1]}"
+                            android:text="@{ActivityFlags.FLAGS[1].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[4]}"
-                    android:text="@{navigationView.Companion.FLAGS[4].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[2]}"
+                            android:text="@{ActivityFlags.FLAGS[2].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[5]}"
-                    android:text="@{navigationView.Companion.FLAGS[5].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[3]}"
+                            android:text="@{ActivityFlags.FLAGS[3].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[6]}"
-                    android:text="@{navigationView.Companion.FLAGS[6].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[4]}"
+                            android:text="@{ActivityFlags.FLAGS[4].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[7]}"
-                    android:text="@{navigationView.Companion.FLAGS[7].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[5]}"
+                            android:text="@{ActivityFlags.FLAGS[5].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[8]}"
-                    android:text="@{navigationView.Companion.FLAGS[8].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[6]}"
+                            android:text="@{ActivityFlags.FLAGS[6].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[9]}"
-                    android:text="@{navigationView.Companion.FLAGS[9].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[7]}"
+                            android:text="@{ActivityFlags.FLAGS[7].first}"/>
 
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[8]}"
+                            android:text="@{ActivityFlags.FLAGS[8].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[10]}"
-                    android:text="@{navigationView.Companion.FLAGS[10].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[9]}"
+                            android:text="@{ActivityFlags.FLAGS[9].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[11]}"
-                    android:text="@{navigationView.Companion.FLAGS[11].first}"/>
+                </LinearLayout>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[12]}"
-                    android:text="@{navigationView.Companion.FLAGS[12].first}"/>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[13]}"
-                    android:text="@{navigationView.Companion.FLAGS[13].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[10]}"
+                            android:text="@{ActivityFlags.FLAGS[10].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[14]}"
-                    android:text="@{navigationView.Companion.FLAGS[14].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[11]}"
+                            android:text="@{ActivityFlags.FLAGS[11].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[15]}"
-                    android:text="@{navigationView.Companion.FLAGS[15].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[12]}"
+                            android:text="@{ActivityFlags.FLAGS[12].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[16]}"
-                    android:text="@{navigationView.Companion.FLAGS[16].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[13]}"
+                            android:text="@{ActivityFlags.FLAGS[13].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[17]}"
-                    android:text="@{navigationView.Companion.FLAGS[17].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[14]}"
+                            android:text="@{ActivityFlags.FLAGS[14].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[18]}"
-                    android:text="@{navigationView.Companion.FLAGS[18].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[15]}"
+                            android:text="@{ActivityFlags.FLAGS[15].first}"/>
 
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@={navigationView.flags[19]}"
-                    android:text="@{navigationView.Companion.FLAGS[19].first}"/>
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[16]}"
+                            android:text="@{ActivityFlags.FLAGS[16].first}"/>
+
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[17]}"
+                            android:text="@{ActivityFlags.FLAGS[17].first}"/>
+
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[18]}"
+                            android:text="@{ActivityFlags.FLAGS[18].first}"/>
+
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={navigationView.flags[19]}"
+                            android:text="@{ActivityFlags.FLAGS[19].first}"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
