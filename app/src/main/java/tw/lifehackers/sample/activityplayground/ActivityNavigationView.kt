@@ -4,39 +4,32 @@ import android.app.Activity
 import android.content.Intent
 
 interface ActivityNavigationView {
+    companion object {
+        val FLAGS = listOf(
+            "single top" to Intent.FLAG_ACTIVITY_SINGLE_TOP,
+            "clear top" to Intent.FLAG_ACTIVITY_CLEAR_TOP,
+            "clear task" to Intent.FLAG_ACTIVITY_CLEAR_TASK,
+            "new document" to Intent.FLAG_ACTIVITY_NEW_DOCUMENT,
+            "new task" to Intent.FLAG_ACTIVITY_NEW_TASK
+        )
+    }
 
-    var singleTopFlag: Boolean
-    var clearTaskFlag: Boolean
-    var clearTopFlag: Boolean
-    var newDocumentFlag: Boolean
+    val flags: MutableMap<Int, Boolean>
 
     fun provideActivity(): Activity
 
-    fun launchActivity(activityClass: Class<out Activity>, vararg additionalFlags: Int) {
+    fun launchActivity(activityClass: Class<out Activity>) {
         val activity = provideActivity()
         activity.startActivity(Intent(activity.applicationContext, activityClass).apply {
-            additionalFlags.forEach { addFlags(it) }
-            if (newDocumentFlag) {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT)
-            }
-
-            if (clearTaskFlag) {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            }
-
-            if (clearTopFlag) {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            }
-
-            if (singleTopFlag) {
-                addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            this@ActivityNavigationView.flags.forEach {
+                val (index, value) = it
+                if (value) addFlags(FLAGS[index].second)
             }
         })
     }
 
     fun launchMainActivityInStandardMode() = launchActivity(MainActivity::class.java)
     fun launchSecondActivityInStandardMode() = launchActivity(SecondActivity::class.java)
-    fun launchMainActivityInSingleTopMode() = launchActivity(MainActivity::class.java, Intent.FLAG_ACTIVITY_SINGLE_TOP)
     fun launchSingleTaskActivity() = launchActivity(SingleTaskActivity::class.java)
     fun launchSingleInstanceActivity() = launchActivity(SingleInstanceActivity::class.java)
 

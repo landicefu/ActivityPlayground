@@ -32,12 +32,6 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="main - single top mode"
-                android:onClick="@{() -> navigationView.launchMainActivityInSingleTopMode()}"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="single task activity"
                 android:onClick="@{() -> navigationView.launchSingleTaskActivity()}"/>
 
@@ -50,26 +44,32 @@
         <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="@={navigationView.singleTopFlag}"
-                android:text="single top flag"/>
+                android:checked="@={navigationView.flags[0]}"
+                android:text="@{navigationView.Companion.FLAGS[0].first}"/>
 
         <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="@={navigationView.clearTaskFlag}"
-                android:text="clear task flag"/>
+                android:checked="@={navigationView.flags[1]}"
+                android:text="@{navigationView.Companion.FLAGS[1].first}"/>
 
         <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="@={navigationView.clearTopFlag}"
-                android:text="clear top flag"/>
+                android:checked="@={navigationView.flags[2]}"
+                android:text="@{navigationView.Companion.FLAGS[2].first}"/>
 
         <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="@={navigationView.newDocumentFlag}"
-                android:text="new document flag"/>
+                android:checked="@={navigationView.flags[3]}"
+                android:text="@{navigationView.Companion.FLAGS[3].first}"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={navigationView.flags[4]}"
+                android:text="@{navigationView.Companion.FLAGS[4].first}"/>
 
     </LinearLayout>
 
